@@ -1,56 +1,434 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8"/>
 <title>Scoresheet Replica</title>
 <style>
-  body { font-family: Arial, sans-serif; margin: 20px; }
-  table { border-collapse: collapse; }
-  td { border: 1px solid #ccc; padding: 4px; text-align: center; }
-  input { border: none; width: 100%; height: 100%; box-sizing: border-box; text-align: center; }
+  body { 
+    font-family: Arial, sans-serif; 
+    margin: 20px; 
+    background-color: #f8f9fa;
+  }
+  
+  h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  table { 
+    border-collapse: collapse; 
+    margin: 0 auto;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background: white;
+  }
+  
+  td { 
+    border: 1px solid #ccc; 
+    padding: 8px; 
+    text-align: center; 
+    min-width: 60px;
+  }
+  
+  input { 
+    border: none; 
+    width: 100%; 
+    height: 100%; 
+    box-sizing: border-box; 
+    text-align: center; 
+    background: transparent;
+    font-size: 14px;
+  }
+  
+  input:focus {
+    outline: 2px solid #4CAF50;
+    background-color: #f0f8f0;
+  }
+  
+  .header-cell {
+    background-color: #EFEFEF;
+    font-weight: bold;
+  }
+  
+  .home-header {
+    background-color: #93C47D;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .away-header {
+    background-color: #76A5AF;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .calc-cell {
+    background-color: #D9D9D9;
+    font-weight: bold;
+  }
+  
+  .total-home {
+    background-color: #93C47D;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .total-away {
+    background-color: #76A5AF;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .game-label {
+    background-color: #EFEFEF;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 12px;
+  }
 </style>
 </head>
 <body>
-
-<h2>Scoresheet</h2>
+<h2>Badminton Scoresheet</h2>
 <table id="scoreTable">
-<tr><td style="background-color:#EFEFEF"></td><td style="background-color:#93C47D">G1 Home</td><td style="background-color:#76A5AF">G1 Away</td><td style="background-color:#93C47D">G2 Home</td><td style="background-color:#76A5AF">G2 Away</td><td style="background-color:#93C47D">G3 Home</td><td style="background-color:#76A5AF">G3 Away</td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF">Wins (1 = Home, 0 = Away)</td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF">Result</td></tr><tr><td style="background-color:#EFEFEF">1.0</td><td><input type="text" value="18.0" style="width:50px;text-align:center"></td><td><input type="text" value="21.0" style="width:50px;text-align:center"></td><td><input type="text" value="15.0" style="width:50px;text-align:center"></td><td><input type="text" value="21.0" style="width:50px;text-align:center"></td><td><input type="text" value="" style="width:50px;text-align:center"></td><td><input type="text" value="" style="width:50px;text-align:center"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#D9D9D9">=if(B4&gt;C4,1,0)</td><td style="background-color:#D9D9D9">=if(D4&gt;E4,1,0)</td><td style="background-color:#D9D9D9">=if(F4&gt;1,if(F4&gt;G4,1,0),&quot;&quot;)</td><td style="background-color:#EFEFEF"></td><td style="background-color:#D9D9D9">=if(sum(I4:K4)=2,1,0)</td></tr><tr><td style="background-color:#EFEFEF">2.0</td><td><input type="text" value="17.0" style="width:50px;text-align:center"></td><td><input type="text" value="21.0" style="width:50px;text-align:center"></td><td><input type="text" value="16.0" style="width:50px;text-align:center"></td><td><input type="text" value="21.0" style="width:50px;text-align:center"></td><td><input type="text" value="" style="width:50px;text-align:center"></td><td><input type="text" value="" style="width:50px;text-align:center"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#D9D9D9">=if(B5&gt;C5,1,0)</td><td style="background-color:#D9D9D9">=if(D5&gt;E5,1,0)</td><td style="background-color:#D9D9D9">=if(F5&gt;1,if(F5&gt;G5,1,0),&quot;&quot;)</td><td style="background-color:#EFEFEF"></td><td style="background-color:#D9D9D9">=if(sum(I5:K5)=2,1,0)</td></tr><tr><td style="background-color:#EFEFEF">3.0</td><td><input type="text" value="21.0" style="width:50px;text-align:center"></td><td><input type="text" value="8.0" style="width:50px;text-align:center"></td><td><input type="text" value="21.0" style="width:50px;text-align:center"></td><td><input type="text" value="19.0" style="width:50px;text-align:center"></td><td><input type="text" value="" style="width:50px;text-align:center"></td><td><input type="text" value="" style="width:50px;text-align:center"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#D9D9D9">=if(B6&gt;C6,1,0)</td><td style="background-color:#D9D9D9">=if(D6&gt;E6,1,0)</td><td style="background-color:#D9D9D9">=if(F6&gt;1,if(F6&gt;G6,1,0),&quot;&quot;)</td><td style="background-color:#EFEFEF"></td><td style="background-color:#D9D9D9">=if(sum(I6:K6)=2,1,0)</td></tr><tr><td style="background-color:#EFEFEF">4.0</td><td><input type="text" value="21.0" style="width:50px;text-align:center"></td><td><input type="text" value="23.0" style="width:50px;text-align:center"></td><td><input type="text" value="21.0" style="width:50px;text-align:center"></td><td><input type="text" value="18.0" style="width:50px;text-align:center"></td><td><input type="text" value="20.0" style="width:50px;text-align:center"></td><td><input type="text" value="22.0" style="width:50px;text-align:center"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#D9D9D9">=if(B7&gt;C7,1,0)</td><td style="background-color:#D9D9D9">=if(D7&gt;E7,1,0)</td><td style="background-color:#D9D9D9">=if(F7&gt;1,if(F7&gt;G7,1,0),&quot;&quot;)</td><td style="background-color:#EFEFEF"></td><td style="background-color:#D9D9D9">=if(sum(I7:K7)=2,1,0)</td></tr><tr><td style="background-color:#EFEFEF">5.0</td><td><input type="text" value="21.0" style="width:50px;text-align:center"></td><td><input type="text" value="17.0" style="width:50px;text-align:center"></td><td><input type="text" value="21.0" style="width:50px;text-align:center"></td><td><input type="text" value="13.0" style="width:50px;text-align:center"></td><td><input type="text" value="" style="width:50px;text-align:center"></td><td><input type="text" value="" style="width:50px;text-align:center"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#D9D9D9">=if(B8&gt;C8,1,0)</td><td style="background-color:#D9D9D9">=if(D8&gt;E8,1,0)</td><td style="background-color:#D9D9D9">=if(F8&gt;1,if(F8&gt;G8,1,0),&quot;&quot;)</td><td style="background-color:#EFEFEF"></td><td style="background-color:#D9D9D9">=if(sum(I8:K8)=2,1,0)</td></tr><tr><td style="background-color:#EFEFEF">6.0</td><td><input type="text" value="21.0" style="width:50px;text-align:center"></td><td><input type="text" value="14.0" style="width:50px;text-align:center"></td><td><input type="text" value="21.0" style="width:50px;text-align:center"></td><td><input type="text" value="14.0" style="width:50px;text-align:center"></td><td><input type="text" value="" style="width:50px;text-align:center"></td><td><input type="text" value="" style="width:50px;text-align:center"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#D9D9D9">=if(B9&gt;C9,1,0)</td><td style="background-color:#D9D9D9">=if(D9&gt;E9,1,0)</td><td style="background-color:#D9D9D9">=if(F9&gt;1,if(F9&gt;G9,1,0),&quot;&quot;)</td><td style="background-color:#EFEFEF"></td><td style="background-color:#D9D9D9">=if(sum(I9:K9)=2,1,0)</td></tr><tr><td style="background-color:#EFEFEF">7.0</td><td><input type="text" value="21.0" style="width:50px;text-align:center"></td><td><input type="text" value="18.0" style="width:50px;text-align:center"></td><td><input type="text" value="21.0" style="width:50px;text-align:center"></td><td><input type="text" value="14.0" style="width:50px;text-align:center"></td><td><input type="text" value="" style="width:50px;text-align:center"></td><td><input type="text" value="" style="width:50px;text-align:center"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#D9D9D9">=if(B10&gt;C10,1,0)</td><td style="background-color:#D9D9D9">=if(D10&gt;E10,1,0)</td><td style="background-color:#D9D9D9">=if(F10&gt;1,if(F10&gt;G10,1,0),&quot;&quot;)</td><td style="background-color:#EFEFEF"></td><td style="background-color:#D9D9D9">=if(sum(I10:K10)=2,1,0)</td></tr><tr><td style="background-color:#EFEFEF">8.0</td><td><input type="text" value="26.0" style="width:50px;text-align:center"></td><td><input type="text" value="24.0" style="width:50px;text-align:center"></td><td><input type="text" value="18.0" style="width:50px;text-align:center"></td><td><input type="text" value="21.0" style="width:50px;text-align:center"></td><td><input type="text" value="21.0" style="width:50px;text-align:center"></td><td><input type="text" value="16.0" style="width:50px;text-align:center"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#D9D9D9">=if(B11&gt;C11,1,0)</td><td style="background-color:#D9D9D9">=if(D11&gt;E11,1,0)</td><td style="background-color:#D9D9D9">=if(F11&gt;1,if(F11&gt;G11,1,0),&quot;&quot;)</td><td style="background-color:#EFEFEF"></td><td style="background-color:#D9D9D9">=if(sum(I11:K11)=2,1,0)</td></tr><tr><td style="background-color:#EFEFEF">9.0</td><td><input type="text" value="21.0" style="width:50px;text-align:center"></td><td><input type="text" value="14.0" style="width:50px;text-align:center"></td><td><input type="text" value="21.0" style="width:50px;text-align:center"></td><td><input type="text" value="17.0" style="width:50px;text-align:center"></td><td><input type="text" value="" style="width:50px;text-align:center"></td><td><input type="text" value="" style="width:50px;text-align:center"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#D9D9D9">=if(B12&gt;C12,1,0)</td><td style="background-color:#D9D9D9">=if(D12&gt;E12,1,0)</td><td style="background-color:#D9D9D9">=if(F12&gt;1,if(F12&gt;G12,1,0),&quot;&quot;)</td><td style="background-color:#EFEFEF"></td><td style="background-color:#D9D9D9">=if(sum(I12:K12)=2,1,0)</td></tr><tr><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td></tr><tr><td style="background-color:#EFEFEF"></td><td style="background-color:#D9D9D9">=SUM(B4:B12)</td><td style="background-color:#D9D9D9">=SUM(C4:C12)</td><td style="background-color:#D9D9D9">=SUM(D4:D12)</td><td style="background-color:#D9D9D9">=SUM(E4:E12)</td><td style="background-color:#D9D9D9">=SUM(F4:F12)</td><td style="background-color:#D9D9D9">=SUM(G4:G12)</td><td style="background-color:#EFEFEF"></td><td style="background-color:#93C47D">=B14+D14+F14</td><td style="background-color:#76A5AF">=C14+E14+G14</td><td style="background-color:#EFEFEF">Points (H v A)</td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td></tr><tr><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td></tr><tr><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#93C47D">=sum(I4:I12)+sum(J4:J12)+sum(K4:K12)</td><td style="background-color:#76A5AF">=count(I4:K12)-I16</td><td style="background-color:#EFEFEF">Games (H v A)</td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td></tr><tr><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td></tr><tr><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td><td style="background-color:#93C47D">=sum(M4:M12)</td><td style="background-color:#76A5AF">=(9-I18)</td><td style="background-color:#EFEFEF">Result (H v A)</td><td style="background-color:#EFEFEF"></td><td style="background-color:#EFEFEF"></td></tr>
+  <!-- Header Row -->
+  <tr>
+    <td class="header-cell"></td>
+    <td class="home-header">G1 Home</td>
+    <td class="away-header">G1 Away</td>
+    <td class="home-header">G2 Home</td>
+    <td class="away-header">G2 Away</td>
+    <td class="home-header">G3 Home</td>
+    <td class="away-header">G3 Away</td>
+    <td class="header-cell"></td>
+    <td class="header-cell">Result 1 (1=Home, 0=Away)</td>
+    <td class="header-cell">Result 2</td>
+    <td class="header-cell">Result 3</td>
+    <td class="header-cell"></td>
+    <td class="header-cell">Result</td>
+  </tr>
+  
+  <!-- Game Rows -->
+  <tr>
+    <td class="game-label">Game 1</td>
+    <td><input type="number" min="0" placeholder="0" data-row="1" data-col="home1"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="1" data-col="away1"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="1" data-col="home2"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="1" data-col="away2"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="1" data-col="home3"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="1" data-col="away3"></td>
+    <td class="header-cell"></td>
+    <td class="calc-cell" id="win1-1"></td>
+    <td class="calc-cell" id="win1-2"></td>
+    <td class="calc-cell" id="win1-3"></td>
+    <td class="header-cell"></td>
+    <td class="calc-cell" id="result-1"></td>
+  </tr>
+  
+  <tr>
+    <td class="game-label">Game 2</td>
+    <td><input type="number" min="0" placeholder="0" data-row="2" data-col="home1"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="2" data-col="away1"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="2" data-col="home2"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="2" data-col="away2"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="2" data-col="home3"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="2" data-col="away3"></td>
+    <td class="header-cell"></td>
+    <td class="calc-cell" id="win2-1"></td>
+    <td class="calc-cell" id="win2-2"></td>
+    <td class="calc-cell" id="win2-3"></td>
+    <td class="header-cell"></td>
+    <td class="calc-cell" id="result-2"></td>
+  </tr>
+  
+  <tr>
+    <td class="game-label">Game 3</td>
+    <td><input type="number" min="0" placeholder="0" data-row="3" data-col="home1"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="3" data-col="away1"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="3" data-col="home2"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="3" data-col="away2"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="3" data-col="home3"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="3" data-col="away3"></td>
+    <td class="header-cell"></td>
+    <td class="calc-cell" id="win3-1"></td>
+    <td class="calc-cell" id="win3-2"></td>
+    <td class="calc-cell" id="win3-3"></td>
+    <td class="header-cell"></td>
+    <td class="calc-cell" id="result-3"></td>
+  </tr>
+  
+  <tr>
+    <td class="game-label">Game 4</td>
+    <td><input type="number" min="0" placeholder="0" data-row="4" data-col="home1"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="4" data-col="away1"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="4" data-col="home2"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="4" data-col="away2"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="4" data-col="home3"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="4" data-col="away3"></td>
+    <td class="header-cell"></td>
+    <td class="calc-cell" id="win4-1"></td>
+    <td class="calc-cell" id="win4-2"></td>
+    <td class="calc-cell" id="win4-3"></td>
+    <td class="header-cell"></td>
+    <td class="calc-cell" id="result-4"></td>
+  </tr>
+  
+  <tr>
+    <td class="game-label">Game 5</td>
+    <td><input type="number" min="0" placeholder="0" data-row="5" data-col="home1"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="5" data-col="away1"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="5" data-col="home2"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="5" data-col="away2"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="5" data-col="home3"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="5" data-col="away3"></td>
+    <td class="header-cell"></td>
+    <td class="calc-cell" id="win5-1"></td>
+    <td class="calc-cell" id="win5-2"></td>
+    <td class="calc-cell" id="win5-3"></td>
+    <td class="header-cell"></td>
+    <td class="calc-cell" id="result-5"></td>
+  </tr>
+  
+  <tr>
+    <td class="game-label">Game 6</td>
+    <td><input type="number" min="0" placeholder="0" data-row="6" data-col="home1"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="6" data-col="away1"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="6" data-col="home2"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="6" data-col="away2"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="6" data-col="home3"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="6" data-col="away3"></td>
+    <td class="header-cell"></td>
+    <td class="calc-cell" id="win6-1"></td>
+    <td class="calc-cell" id="win6-2"></td>
+    <td class="calc-cell" id="win6-3"></td>
+    <td class="header-cell"></td>
+    <td class="calc-cell" id="result-6"></td>
+  </tr>
+  
+  <tr>
+    <td class="game-label">Game 7</td>
+    <td><input type="number" min="0" placeholder="0" data-row="7" data-col="home1"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="7" data-col="away1"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="7" data-col="home2"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="7" data-col="away2"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="7" data-col="home3"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="7" data-col="away3"></td>
+    <td class="header-cell"></td>
+    <td class="calc-cell" id="win7-1"></td>
+    <td class="calc-cell" id="win7-2"></td>
+    <td class="calc-cell" id="win7-3"></td>
+    <td class="header-cell"></td>
+    <td class="calc-cell" id="result-7"></td>
+  </tr>
+  
+  <tr>
+    <td class="game-label">Game 8</td>
+    <td><input type="number" min="0" placeholder="0" data-row="8" data-col="home1"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="8" data-col="away1"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="8" data-col="home2"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="8" data-col="away2"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="8" data-col="home3"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="8" data-col="away3"></td>
+    <td class="header-cell"></td>
+    <td class="calc-cell" id="win8-1"></td>
+    <td class="calc-cell" id="win8-2"></td>
+    <td class="calc-cell" id="win8-3"></td>
+    <td class="header-cell"></td>
+    <td class="calc-cell" id="result-8"></td>
+  </tr>
+  
+  <tr>
+    <td class="game-label">Game 9</td>
+    <td><input type="number" min="0" placeholder="0" data-row="9" data-col="home1"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="9" data-col="away1"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="9" data-col="home2"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="9" data-col="away2"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="9" data-col="home3"></td>
+    <td><input type="number" min="0" placeholder="0" data-row="9" data-col="away3"></td>
+    <td class="header-cell"></td>
+    <td class="calc-cell" id="win9-1"></td>
+    <td class="calc-cell" id="win9-2"></td>
+    <td class="calc-cell" id="win9-3"></td>
+    <td class="header-cell"></td>
+    <td class="calc-cell" id="result-9"></td>
+  </tr>
+  
+  <!-- Spacer Row -->
+  <tr>
+    <td class="header-cell" colspan="13"></td>
+  </tr>
+  
+  <!-- Totals Row -->
+  <tr>
+    <td class="header-cell">Totals</td>
+    <td class="calc-cell" id="total-home1"></td>
+    <td class="calc-cell" id="total-away1"></td>
+    <td class="calc-cell" id="total-home2"></td>
+    <td class="calc-cell" id="total-away2"></td>
+    <td class="calc-cell" id="total-home3"></td>
+    <td class="calc-cell" id="total-away3"></td>
+    <td class="header-cell"></td>
+    <td class="total-home" id="points-home">0</td>
+    <td class="total-away" id="points-away">0</td>
+    <td class="header-cell"><strong>Points (H v A)</strong></td>
+    <td class="header-cell"></td>
+    <td class="header-cell"></td>
+  </tr>
+  
+  <!-- Rubbers Won Row -->
+  <tr>
+    <td class="header-cell"></td>
+    <td class="header-cell" colspan="6"></td>
+    <td class="header-cell"></td>
+    <td class="total-home" id="rubbers-home">0</td>
+    <td class="total-away" id="rubbers-away">0</td>
+    <td class="header-cell"><strong>Rubbers Won (H v A)</strong></td>
+    <td class="header-cell"></td>
+    <td class="header-cell"></td>
+  </tr>
+  
+  <!-- Results Summary Row -->
+  <tr>
+    <td class="header-cell"></td>
+    <td class="header-cell" colspan="6"></td>
+    <td class="header-cell"></td>
+    <td class="total-home" id="games-home">0</td>
+    <td class="total-away" id="games-away">0</td>
+    <td class="header-cell"><strong>Games Won (H v A)</strong></td>
+    <td class="header-cell"></td>
+    <td class="header-cell"></td>
+  </tr>
 </table>
 
 <script>
-function updateScores() {
-  const table = document.getElementById('scoreTable');
-
-  // Calculate Wins & Result for rows 4-12
-  for (let r = 1; r <= 9; r++) {
-    const row = table.rows[r];
-    for (let g = 0; g < 3; g++) {
-      const home = parseFloat(row.cells[1 + g*2].querySelector('input').value) || 0;
-      const away = parseFloat(row.cells[2 + g*2].querySelector('input').value) || 0;
-      row.cells[8 + g].textContent = (home > away) ? 1 : 0;
+function calculateScores() {
+  // Calculate individual game winners and results
+  for (let row = 1; row <= 9; row++) {
+    let wins = 0;
+    
+    // Check each of the 3 games in this row
+    for (let game = 1; game <= 3; game++) {
+      const homeInput = document.querySelector(`input[data-row="${row}"][data-col="home${game}"]`);
+      const awayInput = document.querySelector(`input[data-row="${row}"][data-col="away${game}"]`);
+      
+      const homeScore = parseFloat(homeInput.value) || 0;
+      const awayScore = parseFloat(awayInput.value) || 0;
+      
+      const winCell = document.getElementById(`win${row}-${game}`);
+      
+      if (homeInput.value !== '' || awayInput.value !== '') {
+        if (homeScore > awayScore) {
+          winCell.textContent = '1';
+          wins++;
+        } else {
+          winCell.textContent = '0';
+        }
+      } else {
+        winCell.textContent = '';
+      }
     }
-    const winSum = [row.cells[8].textContent, row.cells[9].textContent, row.cells[10].textContent]
-                    .map(Number).reduce((a,b)=>a+b,0);
-    row.cells[12].textContent = (winSum === 2) ? 1 : 0;
-  }
-
-  // Calculate B14:G14 totals (Excel row 14 = HTML row index 11)
-  const totalRow = table.rows[11];
-  for (let c = 1; c <= 6; c++) {
-    let sum = 0;
-    for (let r = 1; r <= 9; r++) {
-      const inp = table.rows[r].cells[c].querySelector('input');
-      if (inp) sum += parseFloat(inp.value) || 0;
+    
+    // Calculate overall result for this row (1 if home wins 2+ games)
+    const resultCell = document.getElementById(`result-${row}`);
+    const hasAnyInput = document.querySelectorAll(`input[data-row="${row}"]`).length > 0 &&
+                       Array.from(document.querySelectorAll(`input[data-row="${row}"]`)).some(inp => inp.value !== '');
+    
+    if (hasAnyInput) {
+      resultCell.textContent = wins >= 2 ? '1' : '0';
+    } else {
+      resultCell.textContent = '';
     }
-    totalRow.cells[c].textContent = sum;
   }
+  
+  // Calculate column totals
+  for (let game = 1; game <= 3; game++) {
+    let homeTotal = 0;
+    let awayTotal = 0;
+    let hasHomeValues = false;
+    let hasAwayValues = false;
+    
+    for (let row = 1; row <= 9; row++) {
+      const homeInput = document.querySelector(`input[data-row="${row}"][data-col="home${game}"]`);
+      const awayInput = document.querySelector(`input[data-row="${row}"][data-col="away${game}"]`);
+      
+      if (homeInput.value !== '') {
+        homeTotal += parseFloat(homeInput.value) || 0;
+        hasHomeValues = true;
+      }
+      if (awayInput.value !== '') {
+        awayTotal += parseFloat(awayInput.value) || 0;
+        hasAwayValues = true;
+      }
+    }
+    
+    document.getElementById(`total-home${game}`).textContent = hasHomeValues ? homeTotal : '';
+    document.getElementById(`total-away${game}`).textContent = hasAwayValues ? awayTotal : '';
+  }
+  
+  // Calculate overall points (sum of all home scores vs all away scores)
+  let totalHomePoints = 0;
+  let totalAwayPoints = 0;
+  let hasAnyValues = false;
+  
+  for (let game = 1; game <= 3; game++) {
+    const homeTotal = document.getElementById(`total-home${game}`).textContent;
+    const awayTotal = document.getElementById(`total-away${game}`).textContent;
+    
+    if (homeTotal !== '') {
+      totalHomePoints += parseFloat(homeTotal);
+      hasAnyValues = true;
+    }
+    if (awayTotal !== '') {
+      totalAwayPoints += parseFloat(awayTotal);
+      hasAnyValues = true;
+    }
+  }
+  
+  document.getElementById('points-home').textContent = hasAnyValues ? totalHomePoints : '0';
+  document.getElementById('points-away').textContent = hasAnyValues ? totalAwayPoints : '0';
+  
+  // Calculate rubbers won (count of individual game wins)
+  let homeRubbersWon = 0;
+  let awayRubbersWon = 0;
+  
+  for (let row = 1; row <= 9; row++) {
+    for (let game = 1; game <= 3; game++) {
+      const winCell = document.getElementById(`win${row}-${game}`);
+      if (winCell.textContent === '1') {
+        homeRubbersWon++;
+      } else if (winCell.textContent === '0') {
+        awayRubbersWon++;
+      }
+    }
+  }
+  
+  document.getElementById('rubbers-home').textContent = homeRubbersWon;
+  document.getElementById('rubbers-away').textContent = awayRubbersWon;
+  
+  // Calculate games won (count of 1s in result column)
+  let homeGamesWon = 0;
+  let awayGamesWon = 0;
+  
+  for (let row = 1; row <= 9; row++) {
+    const resultCell = document.getElementById(`result-${row}`);
+    if (resultCell.textContent === '1') {
+      homeGamesWon++;
+    } else if (resultCell.textContent === '0') {
+      awayGamesWon++;
+    }
+  }
+  
+  document.getElementById('games-home').textContent = homeGamesWon;
+  document.getElementById('games-away').textContent = awayGamesWon;
 }
 
-document.querySelectorAll('input').forEach(inp => {
-  inp.addEventListener('input', updateScores);
+// Add event listeners to all inputs
+document.querySelectorAll('input').forEach(input => {
+  input.addEventListener('input', calculateScores);
+  input.addEventListener('change', calculateScores);
 });
-</script>
 
+// Initial calculation
+calculateScores();
+</script>
 </body>
 </html>
